@@ -33,6 +33,10 @@ body {
       font-size: 32px;
       margin: 0;
       line-height: 1.25 !important;
+      
+      @media handheld, only screen and (max-width: 767px) {
+        font-size: 32 * 0.9;
+      }
 
       a {
         color: black;
