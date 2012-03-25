@@ -1,0 +1,156 @@
+/*
+ *= require 'fonts'
+ *= require_directory './foundation'
+ *= require_self
+ */
+
+@import 'bourbon/bourbon';
+
+$yellow: #ffde00;
+$background: #f8f8f8;
+
+$font-size: 14px;
+$important: 32px;
+
+body {
+  font-family: $helvetica;
+  background-color: $background;
+
+  div[role=navigation] {
+    background-color: $yellow;
+    background-image: url('pattern.png');
+    border-bottom: 1px solid darken($yellow, 10%);
+    @include box-shadow(0 0 5px 2px rgba(0, 0, 0, 0.2));
+    margin: 0 0 golden-ratio($font-size, 1) 0;
+  }
+
+  header {
+    padding: golden-ratio($font-size, 2) 0 golden-ratio($font-size, 1) 0;
+
+    h1 {
+      font-family: Cutive, $helvetica;
+      font-weight: normal;
+      font-size: 32px;
+      margin: 0;
+      line-height: 1.25 !important;
+
+      a {
+        color: black;
+        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+
+    nav {
+      ul {
+        float: right;
+        margin: 0;
+
+        li {
+          @include inline-block;
+          margin: 0;
+
+          a {
+            color: black;
+            font-size: golden-ratio($important, -1);
+            font-weight: bold;
+            @include inline-block;
+            padding: golden-ratio($font-size, -1) golden-ratio($font-size, 1) 0 golden-ratio($font-size, 1);
+            position: relative;
+
+            &:hover {
+              color: black;
+
+              &:before {
+                content: '☛';
+                @include inline-block;
+                left: golden-ratio($font-size, -2) * -1;
+                position: absolute;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  section {
+    border-bottom: 1px solid darken($background, 10%);
+
+    p {
+      font-size: $font-size;
+      line-height: 1.618;
+
+      @media handheld, only screen and (max-width: 767px) {
+        font-size: $font-size * 1.1;
+      }
+    }
+
+    h2 {
+      font-family: Cutive, $helvetica;
+      font-size: 20px;
+      font-weight: normal;
+      margin: golden-ratio($font-size, 1) 0 12px 0;
+
+      @media handheld, only screen and (max-width: 767px) {
+        font-size: 20px * 1.1;
+      }
+    }
+
+    code {
+      background-color: darken($background, 5%);
+      border: 1px solid darken($background, 10%);
+      @include border-radius(3px);
+      font-family: Menlo, Monaco, $monospace;
+      margin: 0 2px;
+      padding: 0 3px;
+      white-space: nowrap;
+
+      @media handheld, only screen and (max-width: 767px) {
+        font-size: $font-size * 1.1;
+      }
+    }
+
+    pre {
+      background-color: darken($background, 5%);
+      border: 1px solid darken($background, 10%);
+      @include border-radius(3px);
+      font-family: Menlo, Monaco, $monospace;
+      margin: 0 0 18px;
+      overflow: auto;
+      padding: 10px;
+
+      span {
+        &.ss {
+          color: #cc0000;
+        }
+
+        &.s1 {
+          color: #006600;
+        }
+
+        &.k {
+          font-weight: bold;
+        }
+      }
+    }
+
+    ul {
+      li {
+        &:before {
+          content: '☛';
+          @include inline-block;
+        }
+      }
+    }
+  }
+
+  footer {
+    p {
+      padding: golden-ratio($font-size, 0) 0;
+    }
+  }
+}

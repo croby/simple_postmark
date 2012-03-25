@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>SimplePostmark ☛ A simple way to use Postmark™ with your Rails app.</title>
+  <meta name="description" content="A simple way to use Postmark™ with your Rails app.">
+  <meta name="author" content="Mario Uher">
+
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="public/assets/style.css">
+</head>
+<body>
+  <div class="container" role="navigation">
+    <header class="row">
+      <h1 class="five phone-four columns"><a href="">SimplePostmark</a></h1>
+      <nav class="seven columns hide-on-phones">
+        <ul>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#installation">Installation</a>
+          </li>
+          <li>
+            <a href="#usage">Usage</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="container" role="main">
+    <section class="row" id="about">
+      <p class="twelve columns">
+        SimplePostmark makes it easy to send mails via <a href="http://postmarkapp.com">Postmark</a>™ using Rails 3's ActionMailer.
+        SimplePostmark is inspired by <a href="https://github.com/wildbit/postmark-gem">postmark-gem</a>, but unfortunately postmark-gem forced to me to use non-standard Rails calls like <code>postmark_attachments</code>. SimplePostmark uses the standard Rails 3's ActionMailer syntax to send your emails via Postmark.
+      </p>
+      <ul>
+        <li class="six columns">
+          Tested against Ruby versions <code>1.9.2</code>, <code>1.9.3</code>, <code>ruby-head</code> and Rails versions <code>3.0.x</code>, <code>3.1.x</code>, <code>3.2.x</code>, <code>master</code> (upcoming Rails <code>4.0.0</code>).
+        </li>
+        
+        <li class="six columns">
+          If you are still using Ruby <code>1.8.7</code> or <code>Ruby Enterprise Edition</code> with Rails 3, you can use the backported version of this gem called <a href="https://github.com/haihappen/simple_postmark/tree/ruby18">simple_postmark18</a>.
+        </li>
+      </ul>
+    </section>
+    <section class="row" id="installation">
+      <h2>Installation</h2>
+      <p>In your <code>Gemfile</code>:</p>
+<pre><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">'simple_postmark'</span>
+<span class="k">end</span></pre>
+      <p>In your <code>config/environments/production.rb</code>:</p>
+<pre><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:simple_postmark</span>
+<span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">simple_postmark_settings</span> <span class="o">=</span> <span class="p">{</span> <span class="n">api_key</span><span class="p">:</span> <span class="s1">'********-****-****-****-************'</span> <span class="p">}</span></pre>
+    </section>
+    <section class="row" id="usage">
+      <h2>Usage</h2>
+      <p>Just use your standard Rails 3 Mailer:</p>
+<pre><span class="k">class</span> <span class="nc">NotificationMailer</span> <span class="o">&lt;</span> <span class="no">ActionMailer</span><span class="o">::</span><span class="no">Base</span>
+  <span class="k">def</span> <span class="nf">notification</span>
+    <span class="n">mail</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="s1">'ted@himym.tld'</span><span class="p">,</span> <span class="n">from</span><span class="p">:</span> <span class="s1">'barney@himym.tld'</span><span class="p">,</span> <span class="n">subject</span><span class="p">:</span> <span class="s2">"I'm your bro!"</span><span class="p">)</span> <span class="k">do</span>
+      <span class="c1"># ...</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></pre>
+      <p>And of course you can use standard attachment calls and <a href="http://developer.postmarkapp.com/developer-build.html#message-format">Postmark's tags</a>:</p>
+<pre><span class="k">class</span> <span class="nc">NotificationMailer</span> <span class="o">&lt;</span> <span class="no">ActionMailer</span><span class="o">::</span><span class="no">Base</span>
+  <span class="k">def</span> <span class="nf">notification</span>
+    <span class="n">attachments</span><span class="o">[</span><span class="s1">'thebrocode.pdf'</span><span class="o">]</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'thebrocode.pdf'</span><span class="p">)</span>
+      
+      <span class="n">mail</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="s1">'ted@himym.tld'</span><span class="p">,</span> <span class="n">from</span><span class="p">:</span> <span class="s1">'barney@himym.tld'</span><span class="p">,</span> <span class="n">subject</span><span class="p">:</span> <span class="s2">"I'm your bro!"</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="s1">'with-attachment'</span><span class="p">)</span> <span class="k">do</span>
+        <span class="c1"># ...</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></pre>
+    </section>
+    
+    <footer class="row">
+      <p class="six columns centered">
+        2011-2012 created by <a href="http://mariouher.com">Mario Uher</a>, released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
