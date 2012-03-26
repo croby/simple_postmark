@@ -60,9 +60,8 @@ body {
           a {
             color: black;
             font-size: golden-ratio($important, -1);
-            font-weight: bold;
             @include inline-block;
-            padding: golden-ratio($font-size, -1) golden-ratio($font-size, 1) 0 golden-ratio($font-size, 1);
+            padding: golden-ratio($font-size, -1) golden-ratio($font-size, 1) golden-ratio($font-size, -1) golden-ratio($font-size, 1);
             position: relative;
 
             &:hover {
