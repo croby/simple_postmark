@@ -23,3 +23,5 @@ task 'assets:precompile' do
     Sprockets::StaticCompiler.new(env, public_path, bundles, digest: digest).compile
   end
 end
+
+task(default: 'assets:precompile')
