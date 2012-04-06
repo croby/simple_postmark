@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="public/assets/style.css">
 </head>
 <body>
-  <a href="http://github.com/haihappen/simple_postmark" class="show-on-desktops"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
   <div class="container" role="navigation">
     <header class="row">
       <h1 class="five phone-four columns"><a href="">SimplePostmark</a></h1>
@@ -32,22 +31,41 @@
       </nav>
     </header>
   </div>
+  
+  <aside class="container hide-on-phones">
+    <nav class="row" id="buttons">
+      <ul>
+        <li class="two column">
+          <a href="https://github.com/haihappen/simple_postmark">☛ GitHub</a>
+        </li>
+        <li class="offset-by-six two column">
+          <a href="https://github.com/haihappen/simple_postmark/zipball/master">☛ .zip</a>
+        </li>
+        <li class="two column">
+          <a href="https://github.com/haihappen/simple_postmark/tarball/master">☛ .tgz</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  
   <div class="container" role="main">
     <section class="row" id="about">
       <p class="twelve columns">
         SimplePostmark makes it easy to send mails via <a href="http://postmarkapp.com">Postmark</a>™ using Rails 3's ActionMailer.
         SimplePostmark is inspired by <a href="https://github.com/wildbit/postmark-gem">postmark-gem</a>, but unfortunately postmark-gem forced to me to use non-standard Rails calls like <code>postmark_attachments</code>. SimplePostmark uses the standard Rails 3's ActionMailer syntax to send your emails via Postmark.
       </p>
-      <ul>
-        <li class="six columns">
-          Tested against Ruby versions <code>1.9.2</code>, <code>1.9.3</code>, <code>ruby-head</code> and Rails versions <code>3.0.x</code>, <code>3.1.x</code>, <code>3.2.x</code>, <code>master</code> (upcoming Rails <code>4.0.0</code>).
-        </li>
-        
-        <li class="six columns">
-          If you are still using Ruby <code>1.8.7</code> or <code>Ruby Enterprise Edition</code> with Rails 3, you can use the backported version of this gem called <a href="https://github.com/haihappen/simple_postmark/tree/ruby18">simple_postmark18</a>.
-        </li>
-      </ul>
     </section>
+    
+    <section class="row">
+      <p class="six columns">
+        Tested against Ruby versions <code>1.9.2</code>, <code>1.9.3</code>, <code>ruby-head</code> and Rails versions <code>3.0.x</code>, <code>3.1.x</code>, <code>3.2.x</code>, <code>master</code> (upcoming Rails <code>4.0.0</code>).
+      </p>
+      
+      <p class="six columns">
+        If you are still using Ruby <code>1.8.7</code> or <code>Ruby Enterprise Edition</code> with Rails 3, you can use the backported version of this gem called <a href="https://github.com/haihappen/simple_postmark/tree/ruby18">simple_postmark18</a>.
+      </p>
+    </section>
+    
     <section class="row" id="installation">
       <h2>Installation</h2>
       <p>In your <code>Gemfile</code>:</p>
@@ -58,6 +76,7 @@
 <pre><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:simple_postmark</span>
 <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">simple_postmark_settings</span> <span class="o">=</span> <span class="p">{</span> <span class="n">api_key</span><span class="p">:</span> <span class="s1">'********-****-****-****-************'</span> <span class="p">}</span></pre>
     </section>
+    
     <section class="row" id="usage">
       <h2>Usage</h2>
       <p>Just use your standard Rails 3 Mailer:</p>
@@ -86,8 +105,8 @@
       </p>
     </footer>
   </div>
-  <script type="text/javascript">
   
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-30324853-1']);
     _gaq.push(['_trackPageview']);
@@ -97,7 +116,6 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  
   </script>
 </body>
 </html>

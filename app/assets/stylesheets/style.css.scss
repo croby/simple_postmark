@@ -20,7 +20,7 @@ body {
     background-color: $yellow;
     background-image: url('pattern.png');
     border-bottom: 1px solid darken($yellow, 10%);
-    @include box-shadow(0 0 5px 2px rgba(0, 0, 0, 0.2));
+    @include box-shadow(0 0 0 darken($yellow, 20%), 0 1px 0px darken($yellow, 25%), 0 1px 3px 0px darken($background, 35%));
     margin: 0 0 golden-ratio($font-size, 1) 0;
   }
 
@@ -80,77 +80,111 @@ body {
     }
   }
 
-  section {
-    border-bottom: 1px solid darken($background, 10%);
-
-    p {
-      font-size: $font-size;
-      line-height: 1.618;
-
-      @media handheld, only screen and (max-width: 767px) {
-        font-size: $font-size * 1.1;
-      }
-    }
-
-    h2 {
-      font-family: Cutive, $helvetica;
-      font-size: 20px;
-      font-weight: normal;
-      margin: golden-ratio($font-size, 1) 0 12px 0;
-
-      @media handheld, only screen and (max-width: 767px) {
-        font-size: 20px * 1.1;
-      }
-    }
-
-    code {
-      background-color: darken($background, 5%);
-      border: 1px solid darken($background, 10%);
-      @include border-radius(3px);
-      box-sizing: border-box;
-      font-family: Menlo, Monaco, $monospace;
-      @include inline-block;
-      margin: 0 2px;
-      max-width: 100%;
-      overflow: hidden; 
-      padding: 0 3px;
-      text-overflow: ellipsis; 
-      white-space:nowrap; 
-
-      @media handheld, only screen and (max-width: 767px) {
-        font-size: $font-size * 1.1;
-      }
-    }
-
-    pre {
-      background-color: darken($background, 5%);
-      border: 1px solid darken($background, 10%);
-      @include border-radius(3px);
-      font-family: Menlo, Monaco, $monospace;
-      margin: 0 0 18px;
-      padding: 10px;
-      overflow: auto;
-
-      span {
-        &.ss {
-          color: #cc0000;
-        }
-
-        &.s1, &.s2 {
-          color: #006600;
-        }
-
-        &.k {
-          font-weight: bold;
-        }
-      }
-    }
-
-    ul {
+  aside {
+    nav {
       li {
-        &:before {
-          content: '☛';
-          @include inline-block;
+        a {
+          background-color: $yellow;
+          background-image: url('pattern.png');
+          border-sizing: border-box;
+          border: 1px solid darken($yellow, 15%);
+          @include border-radius(5px);
+          @include box-shadow(inset 0 1px 10px 1px darken($yellow, 10%), 0 0 0 darken($yellow, 20%), 0 1px 0px darken($yellow, 25%), 0 2px 3px 0px darken($background, 55%));          color: black;
+          display: block;
+          margin: 0 0 1px 0;
+          padding: golden-ratio($font-size, -1) 0 golden-ratio($font-size, -1) 0;
+          text-align: center;
+
+          &:hover {
+            color: black;
+          }
+
+          &:active {
+            @include box-shadow(inset 0 1px 10px 1px darken($yellow, 10%), 0 0 0 darken($yellow, 20%), 0 0px 0 darken($yellow, 25%), 0 0px 3px 0 darken($background, 55%));
+            margin: 1px 0 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  div {
+    section {
+      border-bottom: 1px solid darken($background, 10%);
+
+      &#about {
+        border-bottom: none;
+      }
+
+      p {
+        font-size: $font-size;
+        line-height: 1.618;
+
+        @media handheld, only screen and (max-width: 767px) {
+          font-size: $font-size * 1.1;
+        }
+      }
+
+      h2 {
+        font-family: Cutive, $helvetica;
+        font-size: 20px;
+        font-weight: normal;
+        margin: golden-ratio($font-size, 1) 0 12px 0;
+
+        @media handheld, only screen and (max-width: 767px) {
+          font-size: 20px * 1.1;
+        }
+      }
+
+      code {
+        background-color: darken($background, 5%);
+        border: 1px solid darken($background, 10%);
+        @include border-radius(3px);
+        box-sizing: border-box;
+        font-family: Menlo, Monaco, $monospace;
+        @include inline-block;
+        margin: 0 2px;
+        max-width: 100%;
+        overflow: hidden; 
+        padding: 0 3px;
+        text-overflow: ellipsis; 
+        white-space:nowrap; 
+
+        @media handheld, only screen and (max-width: 767px) {
+          font-size: $font-size * 1.1;
+        }
+      }
+
+      pre {
+        background-color: darken($background, 5%);
+        border: 1px solid darken($background, 10%);
+        @include border-radius(3px);
+        font-family: Menlo, Monaco, $monospace;
+        margin: 0 0 18px;
+        padding: 10px;
+        overflow: auto;
+
+        span {
+          &.ss {
+            color: #cc0000;
+          }
+
+          &.s1, &.s2 {
+            color: #006600;
+          }
+
+          &.k {
+            font-weight: bold;
+          }
+        }
+      }
+
+      ul {
+        li {
+          &:before {
+            content: '☛';
+            @include inline-block;
+          }
         }
       }
     }
